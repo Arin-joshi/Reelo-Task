@@ -20,7 +20,8 @@ create index if not exists listings_collected_at_idx
 alter table public.listings enable row level security;
 
 drop policy if exists "Public can read listings" on public.listings;
-create policy "Public can read listings"
+drop policy if exists listings_read on public.listings;
+create policy listings_read
   on public.listings
   for select
   to anon, authenticated

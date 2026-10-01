@@ -1,18 +1,14 @@
 # Airbnb listings
 
-Collect Airbnb listing data and show it in a grid.
+Scrape cards from airbnb.com, save them in Supabase, show them in the UI.
 
-## Run it
+The browser only talks to this app (`POST /api/collect`, `GET /api/listings`). Collect writes. The page reads.
 
-1. In Supabase, run `supabase/schema.sql`
+## Setup
+
+1. Run `supabase/schema.sql` in the Supabase SQL editor
 2. Copy `.env.example` to `.env` and add your keys
 3. `npm install`
 4. `npm run dev`
 
-`.env` needs:
-
-```
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-```
+`npm run scrape` does the same thing as the Collect Data button, from the terminal.

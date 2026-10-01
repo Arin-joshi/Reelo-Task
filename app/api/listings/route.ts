@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import { fetchSavedListings } from "@/lib/listings/repository";
+import { getListings } from "@/lib/db";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const listings = await fetchSavedListings();
+    const listings = await getListings();
     return NextResponse.json({ listings });
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Could not load listings";
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "failed to load listings";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

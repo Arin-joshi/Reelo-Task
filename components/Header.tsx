@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CollectButton } from "@/components/collect/CollectButton";
+import { CollectButton } from "@/components/CollectButton";
 import {
   AirbnbMark,
   GlobeIcon,
@@ -10,19 +10,17 @@ import {
   UserIcon,
 } from "@/components/icons";
 
-type HeaderProps = {
-  where: string;
-  onWhereChange: (value: string) => void;
-  collecting: boolean;
-  onCollect: () => void;
-};
-
 export function Header({
   where,
   onWhereChange,
   collecting,
   onCollect,
-}: HeaderProps) {
+}: {
+  where: string;
+  onWhereChange: (value: string) => void;
+  collecting: boolean;
+  onCollect: () => void;
+}) {
   return (
     <header className="border-b border-line bg-page">
       <div className="flex items-center justify-between gap-4 px-6 py-[14px] lg:px-12 xl:px-20">
@@ -39,7 +37,7 @@ export function Header({
               <span className="text-[11px] font-semibold leading-4">Where</span>
               <input
                 value={where}
-                onChange={(event) => onWhereChange(event.target.value)}
+                onChange={(e) => onWhereChange(e.target.value)}
                 placeholder="Search destinations"
                 className="w-full bg-transparent text-[13px] text-ink outline-none placeholder:text-muted"
               />
@@ -51,9 +49,7 @@ export function Header({
             </span>
             <span className="hidden h-7 w-px bg-line lg:block" />
             <span className="hidden min-w-[108px] flex-col justify-center rounded-full px-4 py-1.5 hover:bg-fog lg:flex">
-              <span className="text-[11px] font-semibold leading-4">
-                Check out
-              </span>
+              <span className="text-[11px] font-semibold leading-4">Check out</span>
               <span className="text-[13px] text-muted">Add dates</span>
             </span>
             <span className="hidden h-7 w-px bg-line xl:block" />
@@ -73,14 +69,14 @@ export function Header({
           <CollectButton loading={collecting} onClick={onCollect} />
           <button
             type="button"
-            className="hidden h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-fog lg:inline-flex"
+            className="hidden h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-fog lg:inline-flex"
             aria-label="Language"
           >
             <GlobeIcon className="h-4 w-4" />
           </button>
           <button
             type="button"
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-line pl-3 pr-1.5 transition hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-line pl-3 pr-1.5 hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
             aria-label="Account menu"
           >
             <MenuIcon className="h-4 w-4 text-ink" />
@@ -96,7 +92,7 @@ export function Header({
           <SearchIcon className="h-4 w-4 text-ink" />
           <input
             value={where}
-            onChange={(event) => onWhereChange(event.target.value)}
+            onChange={(e) => onWhereChange(e.target.value)}
             placeholder="Start your search"
             className="w-full bg-transparent text-sm outline-none placeholder:text-muted"
           />

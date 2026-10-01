@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -11,20 +12,17 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Airbnb",
-  description: "Browse collected stays",
+  description: "Airbnb listings",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`${plusJakarta.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <body
-        className="min-h-full bg-page font-sans text-ink"
-        suppressHydrationWarning
-      >
+    <html lang="en" className={`${plusJakarta.variable} h-full`} suppressHydrationWarning>
+      <body className="min-h-full bg-page font-sans text-ink" suppressHydrationWarning>
         {children}
       </body>
     </html>
